@@ -1,0 +1,31 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+/** @var yii\web\View $this */
+/** @var common\models\search\AuthorSearch $model */
+/** @var yii\widgets\ActiveForm $form */
+?>
+
+<div class="author-search">
+
+    <?php $form = ActiveForm::begin([
+        'action' => ['index'],
+        'method' => 'get',
+    ]); ?>
+
+    <?= $form->field($model, 'id') ?>
+
+    <?= $form->field($model, 'authorname') ?>
+
+    <?= $form->field($model, 'dipcription') ?>
+
+    <div class="form-group">
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+</div>

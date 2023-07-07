@@ -32,16 +32,33 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'username',
             'email:email',
-            'password',
-            'idrole',
+            [
+                'attribute' => 'idrole',
+                'content' => function($model) {
+                        if ($model -> idrole == 1) {
+                            return 'Admin';
+                        } else {
+                            return 'User';
+                        }
+                },
+                'headerOptions' => [
+                    'style' => 'width:150px;text-align:center'
+                ],
+                'contentOptions' => [
+                    'style' => 'width:150px;text-align:center'
+                ],
+
+            ],
+            'created_at',
+            'created_by',
+            'updated_at',
+            'updated_by',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, User $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
+                    return Url::toRoute([$action, 'id_user' => $model->id]);
                  }
             ],
         ],
     ]); ?>
 
-
-</div>

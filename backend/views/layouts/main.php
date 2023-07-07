@@ -64,43 +64,78 @@ $formLogout =
               <div class="menu_section">
                 <h3>Category</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+
+                <?php if (Yii::$app->user->identity->idrole == 1) { ?>
+                  <li>
+                    <a><i class="fa fa-home"></i> Quản lý tài khoản <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">About</a></li>
-                      <li><a href="index2.html">Introduce</a></li>
+                    <li>
+                        <?php echo Html::a('Tạo tài khoản', ['/user/create']) ?>
+                    </li>
+
+                    <li>
+                        <?php echo Html::a('Danh sách tài khoản', ['/user']) ?>
+                    </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> User Management <span class="fa fa-chevron-down"></span></a>
+                <?php } ?>
+                <?php if (Yii::$app->user->identity->idrole == 1) { ?>
+                <?php } ?>
+                  <li><a><i class="fa fa-edit"></i> Hồ sơ <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="http://localhost/book-reviews/backend/web/index.php?r=user"> Create User </a></li>
-                      <li><a href="form_advanced.html">Quản lý tài khoản User</a></li>
-                      <li><a href="form_advanced.html">User Information</a></li>
+                    <li>
+                      <?php echo Html::a('Tạo profile') ?>
+                    </li>
+
+                    <li>
+                      <?php echo Html::a('Danh sách tài khoản') ?>
+                    </li>
+                    </ul>
+
+                  </li>
+                  <li>
+                    <a><i class="fa fa-desktop"></i> Quản lý sách <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                    <li>
+                      <?php echo Html::a('Thêm sách', ['/book/create']) ?>
+                    </li>
+                    <li>
+                      <?php echo Html::a('Sửa thông tin sách', ['/book']) ?>
+                    </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> Classify Book <span class="fa fa-chevron-down"></span></a>
+
+                  <li>
+                    <a><i class="fa fa-desktop"></i> Danh mục sách <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="general_elements.html">Bão sách mới cập nhật</a></li>
-                      <li><a href="media_gallery.html">Không thể bỏ lỡ tuần</a></li>
-                      <li><a href="typography.html">Không thể bỏ lỡ tuầ</a></li>
-                      <li><a href="icons.html">Sách hot cả năm</a></li>
-                      <li><a href="glyphicons.html">Sách kinh điển </a></li>
+                    <li>
+                      <?php echo Html::a('Thêm mục mới', ['/category/create']) ?>
+                    </li>
+                    <li>
+                      <?php echo Html::a('Sửa danh mục', ['/category']) ?>
+                    </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-table"></i> Collections <span class="fa fa-chevron-down"></span></a>
+
+                  <li>
+                    <a><i class="fa fa-table"></i> Bộ sưu tập sách <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="tables.html">Bộ sưu tập 1</a></li>
-                      <li><a href="tables_dynamic.html">Bộ sưu tập 2</a></li>
-                      <li><a href="tables_dynamic.html">Bộ sưu tập 3</a></li>
-                      <li><a href="tables_dynamic.html">Bộ sưu tập 4</a></li>
+                    <li>
+                      <?php echo Html::a('Thêm bộ sưu tập mới', ['/collection/create']) ?>
+                    </li>
+                    <li>
+                      <?php echo Html::a('Tông hợp bộ sưu tập', ['/collection']) ?>
+                    </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Static <span class="fa fa-chevron-down"></span></a>
+
+                  <li><a><i class="fa fa-bar-chart-o"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="chartjs.html">View theo chủ đề</a></li>
                       <li><a href="chartjs2.html">view theo collection</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-clone"></i>Edit Book <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-clone"></i> Quán lý sách <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                       <li><a href="fixed_footer.html">Fixed Footer</a></li>
@@ -111,7 +146,7 @@ $formLogout =
               <div class="menu_section">
                 <h3>Live On</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-bug"></i> Edit Book <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-bug"></i> Quản lý sách <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="e_commerce.html">E-commerce</a></li>
                       <li><a href="projects.html">Projects</a></li>

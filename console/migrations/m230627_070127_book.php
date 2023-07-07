@@ -19,7 +19,7 @@ class m230627_070127_book extends Migration
             'idcategory' => $this ->integer(),
             'idfile' => $this ->integer(),
             'ngaxuatban' => $this -> date(),
-            'dipcription' => $this -> text(),
+            'description' => $this -> text(),
         ]);
     }
 

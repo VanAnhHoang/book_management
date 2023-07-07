@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+use common\models\base\Role;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
@@ -19,13 +21,9 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'idrole')->dropDownList(
+        ArrayHelper::map(Role::find()->all(),'id', 'name'),
         [
-            1 => 'admin role' ,
-            2 => 'user role'
-        ],
-
-        [
-            'prompt' => 'Chọn chức năng cho user'
+            'prompt'=>'select role'
         ]
     ) ?>
 
