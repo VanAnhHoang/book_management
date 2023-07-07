@@ -11,16 +11,14 @@ use Yii;
  * @property string $bookname
  * @property int|null $idauthor
  * @property int|null $idcategory
- * @property int|null $idfile
- * @property string|null $ngaxuatban
- * @property string|null $dipcription
+ * @property string|null $description
  * @property int|null $created_at
  * @property string|null $created_by
  * @property int|null $updated_at
  * @property string|null $updated_by
  * @property string $image
- * @property string $qr_code
- * @property string $files
+ * @property string $qrcode
+ * 
  *
  * @property Category $idcategory0
  */
@@ -29,7 +27,8 @@ class Book extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
+    public $file;
+     public static function tableName()
     {
         return 'book';
     }
@@ -40,12 +39,12 @@ class Book extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['bookname', 'image', 'files'], 'required'],
-            [['idauthor', 'idcategory', 'idfile', 'created_at', 'updated_at'], 'integer'],
-            [['ngaxuatban'], 'safe'],
+            [['bookname'], 'required'],
+            [['idauthor', 'idcategory', 'created_at', 'updated_at'], 'integer'],
             [['description'], 'string'],
-            [['bookname', 'created_by', 'updated_by', 'image', 'files'], 'string', 'max' => 255],
+            [['bookname', 'created_by', 'updated_by', 'image'], 'string', 'max' => 255],
             [['idcategory'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['idcategory' => 'id']],
+            [['file'],'file','extensions'=>'jpg,jpeg,png,gif,pdf,']
         ];
     }
 
@@ -59,16 +58,13 @@ class Book extends \yii\db\ActiveRecord
             'bookname' => 'Bookname',
             'idauthor' => 'Idauthor',
             'idcategory' => 'Idcategory',
-            'idfile' => 'Idfile',
-            'ngaxuatban' => 'Ngaxuatban',
             'description' => 'Description',
             'created_at' => 'Created At',
             'created_by' => 'Created By',
             'updated_at' => 'Updated At',
             'updated_by' => 'Updated By',
             'image' => 'Image',
-            'qr_code' => 'QR',
-            'files' => 'Files',
+            'qrcode' => 'QR',
         ];
     }
 

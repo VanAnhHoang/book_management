@@ -17,8 +17,8 @@ class BookSearch extends Book
     public function rules()
     {
         return [
-            [['id', 'idauthor', 'idcategory', 'idfile', 'created_at', 'updated_at'], 'integer'],
-            [['bookname', 'ngaxuatban', 'description', 'created_by', 'updated_by', 'image', 'files'], 'safe'],
+            [['id', 'idauthor', 'idcategory', 'created_at', 'updated_at'], 'integer'],
+            [['bookname', 'description', 'created_by', 'updated_by', 'image'], 'safe'],
         ];
     }
 
@@ -61,8 +61,6 @@ class BookSearch extends Book
             'id' => $this->id,
             'idauthor' => $this->idauthor,
             'idcategory' => $this->idcategory,
-            'idfile' => $this->idfile,
-            'ngaxuatban' => $this->ngaxuatban,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
@@ -71,8 +69,7 @@ class BookSearch extends Book
             ->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'created_by', $this->created_by])
             ->andFilterWhere(['like', 'updated_by', $this->updated_by])
-            ->andFilterWhere(['like', 'image', $this->image])
-            ->andFilterWhere(['like', 'files', $this->files]);
+            ->andFilterWhere(['like', 'image', $this->image]);
 
         return $dataProvider;
     }

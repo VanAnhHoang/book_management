@@ -12,8 +12,7 @@ class Book extends \common\models\base\Book {
         return [
             [['bookname'], 'required'],
             [['idauthor', 'idcategory', 'idfile', 'created_at', 'updated_at'], 'integer'],
-            [['ngaxuatban'], 'safe'],
-            [['dipcription'], 'string'],
+            [['description'], 'string'],
             [['bookname', 'created_by', 'updated_by'], 'string', 'max' => 255],
 
             [['bookname', 'description', 'idfiles'], 'required'],

@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'bookname',
             'idauthor',
             'idcategory',
-            'idfile',
+            
             //'ngaxuatban',
             //'dipcription:ntext',
             //'created_at',

@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
 
 <div class="book-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype'=>'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'bookname')->textInput(['maxlength' => true]) ?>
 
@@ -31,17 +31,11 @@ use yii\widgets\ActiveForm;
         ]
     ) ?>
 
-    <?= $form->field($model, 'idfile')->textInput() ?>
-
-    <?= $form->field($model, 'ngaxuatban')->textInput() ?>
-
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'image')-> fileInput() ?>
+    <?= $form->field($model, 'file')-> fileInput() ?>
 
-    <?= $form->field($model, 'files')-> fileInput() ?>
-
-    <?= $form->field($model, 'qr_code')->hiddenInput(['id_products'=>'qr_code'])->label(false)?>
+    <?= $form->field($model, 'qrcode')->hiddenInput(['idbook'=>'qrcode'])->label(false)?>
 
     ?>
     <div class="form-group">

@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m230707_073534_category
+ * Class m230707_174615_category
  */
-class m230707_073534_category extends Migration
+class m230707_174615_category extends Migration
 {
     /**
      * {@inheritdoc}
@@ -16,6 +16,10 @@ class m230707_073534_category extends Migration
             'id' => $this -> primaryKey(),
             'categoryname' =>$this -> string()->notNull()->unique() ,
             'description' => $this -> string()->notNull(),
+            'created_at' => $this->timestamp(),
+            'created_by' => $this->string(),
+            'updated_at'=>$this->timestamp(),
+            'updated_by'=>$this->string(),
         ]);
         $this->addForeignKey(
             'fk_category_book', 
@@ -39,6 +43,7 @@ class m230707_073534_category extends Migration
         $this->dropTable('category');
     }
 
+
     /*
     // Use up()/down() to run migration code without a transaction.
     public function up()
@@ -48,26 +53,9 @@ class m230707_073534_category extends Migration
 
     public function down()
     {
-        echo "m230627_070539_category cannot be reverted.\n";
+        echo "m230707_174615_category cannot be reverted.\n";
 
         return false;
     }
     */
 }
-
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m230707_073534_category cannot be reverted.\n";
-
-        return false;
-    }
-    */
-
