@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use Endroid\QrCode\QrCode;
 
 /**
  * BookController implements the CRUD actions for Book model.
@@ -124,6 +125,29 @@ class BookController extends Controller
 
         return $this->redirect(['index']);
     }
+    
+    public function actionGenerateQrCode($bookId)
+{
+    // Lấy dữ liệu sách từ ID sách
+    $book = Book::findOne($bookId);
+
+    if ($book) {
+        // Tạo dữ liệu hoặc URL để mã QR đại diện cho sách
+        $qrData = "Book ID: " . $book->id . "\nTitle: " . $book->title;
+
+        // Tạo đối tượng QrCode
+        $qrCode = new QrCode($qrData);
+
+        // Lưu mã QR vào tệp (tùy chọn)
+        $qrCode->writeFile('path/to/save/qrcode.png');
+
+        // Hiển thị mã QR trên giao diện người dùng
+        header('Content-Type: '.$qrCode->getContentType());
+        echo $qrCode->writeString();
+    } else {
+        // Xử lý khi không tìm thấy sách với ID được cung cấp
+    }
+}
 
     /**
      * Finds the Book model based on its primary key value.
