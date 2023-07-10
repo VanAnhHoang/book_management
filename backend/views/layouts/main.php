@@ -127,7 +127,10 @@ $formLogout =
                       <?php echo Html::a('Tông hợp bộ sưu tập', ['/collection']) ?>
                     </li>
                     <li>
-                      <?php echo Html::a('Sách theo bộ sưu tập', ['/collectionbook/create']) ?>
+                      <?php echo Html::a('Thêm sách vào bộ sưu tập', ['/collection-book/create']) ?>
+                    </li>
+                    <li>
+                      <?php echo Html::a('Tổng hợp sách theo bộ sưu tập', ['/collection-book']) ?>
                     </li>
                     </ul>
                   </li>
