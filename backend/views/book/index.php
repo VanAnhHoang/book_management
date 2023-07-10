@@ -35,12 +35,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'idcategory',
             
             //'ngaxuatban',
-            //'dipcription:ntext',
+            'description:ntext',
             //'created_at',
             //'created_by',
             //'updated_at',
             //'updated_by',
-            //'image',
+            [
+                'attribute' => 'image',
+                'format' => 'html',             
+                'value' => function ($model) {
+                 return Html::img('../../uploads/'.$model['image'], ['width'=>'150']);
+                }
+            ],
             //'files',
             [
                 'class' => ActionColumn::className(),

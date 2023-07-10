@@ -4,11 +4,12 @@ namespace backend\controllers;
 
 use common\models\base\Book;
 use common\models\search\BookSearch;
+use Endroid\QrCode\QrCode;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
-use Endroid\QrCode\QrCode;
 
 /**
  * BookController implements the CRUD actions for Book model.
@@ -71,25 +72,35 @@ class BookController extends Controller
     {
         $model = new Book();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
                 $model -> file = UploadedFile::getInstance($model,'file');
+
+                
                 if($model -> file) {
                     $model -> file-> saveAs('../../uploads/'.$model->file->name);
                     $model -> image = $model -> file ->name;
                 }
-                $model -> created_at = time();
-                $model -> updated_at = time();
-                
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
-        }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+                if ($model -> save(false)) {
+                    //Yii::$app->session->addFlash('success', 'Thêm mới thành công');
+                    return $this->redirect((['view', 'id' => $model->id]));
+                } else {
+                    //Yii::$app->session->addFlash('danger', 'Thêm mới không thành công');
+                    return $this->render('create', [
+                        'model' => $model,
+                    ]);
+                }
+            
+            } else{
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
+
+        
+
+
+        
     }
 
     /**
