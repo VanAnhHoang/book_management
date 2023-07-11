@@ -34,17 +34,29 @@ $this->params['breadcrumbs'][] = $this->title;
             'idauthor',
             'idcategory',
             'description:ntext',
+            
+
+        [
+            'attribute' => 'image',
+            'format' => 'html',             
+            'value' => Html::img('../../uploads/'.$model['image'], ['width'=>'150'])
+        ],
+            
+        [
+            'attribute' => 'qrcode',
+            'format' => 'html',             
+            'value' => Html::img('../../qr/'.$model['qrcode'], ['width'=>'150'])
+        ],
+        [
+            'attribute' => 'files',
+            'format' => 'html',             
+            'value' =>$this->render('pdf/real3d-demo 2/index.html',['model' => $model])
+        ],
             'created_at',
             'created_by',
             'updated_at',
             'updated_by',
 
-         [
-            'attribute' => 'image',
-            'format' => 'html',             
-            'value' => Html::img('../../uploads/'.$model['image'], ['width'=>'150'])
-        ]
-            
             
         ],
     ]) ?>

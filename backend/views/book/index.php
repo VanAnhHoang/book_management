@@ -29,16 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id'
             'bookname',
             'idauthor',
             'idcategory',
             
             //'ngaxuatban',
             'description:ntext',
-            //'created_at',
+            
             //'created_by',
-            //'updated_at',
+           
             //'updated_by',
             [
                 'attribute' => 'image',
@@ -54,6 +54,20 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
+
+            [
+                'attribute' => 'qrcode',
+                'format' => 'html',             
+                'value' => function($model) {
+                    return Html::img('../../qr/'.$model['qrcode'], ['width'=>'150']);
+                }
+            ],
+
+            'files',
+
+            'created_at',
+            'updated_at',
+
         ],
     ]); ?>
 

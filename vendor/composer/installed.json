@@ -1140,6 +1140,81 @@
             "install-path": "../egulias/email-validator"
         },
         {
+            "name": "endroid/qr-code",
+            "version": "4.3.5",
+            "version_normalized": "4.3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/endroid/qr-code.git",
+                "reference": "5630e192948b466d418608ecce697465d20260af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/endroid/qr-code/zipball/5630e192948b466d418608ecce697465d20260af",
+                "reference": "5630e192948b466d418608ecce697465d20260af",
+                "shasum": ""
+            },
+            "require": {
+                "bacon/bacon-qr-code": "^2.0",
+                "php": "^7.3||^8.0"
+            },
+            "require-dev": {
+                "endroid/quality": "dev-master",
+                "ext-gd": "*",
+                "khanamiryan/qrcode-detector-decoder": "^1.0.4",
+                "setasign/fpdf": "^1.8.2"
+            },
+            "suggest": {
+                "ext-gd": "Enables you to write PNG images",
+                "khanamiryan/qrcode-detector-decoder": "Enables you to use the image validator",
+                "roave/security-advisories": "Makes sure package versions with known security issues are not installed",
+                "setasign/fpdf": "Enables you to use the PDF writer"
+            },
+            "time": "2021-09-17T07:50:43+00:00",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Endroid\\QrCode\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeroen van den Enden",
+                    "email": "info@endroid.nl"
+                }
+            ],
+            "description": "Endroid QR Code",
+            "homepage": "https://github.com/endroid/qr-code",
+            "keywords": [
+                "code",
+                "endroid",
+                "php",
+                "qr",
+                "qrcode"
+            ],
+            "support": {
+                "issues": "https://github.com/endroid/qr-code/issues",
+                "source": "https://github.com/endroid/qr-code/tree/4.3.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/endroid",
+                    "type": "github"
+                }
+            ],
+            "install-path": "../endroid/qr-code"
+        },
+        {
             "name": "ezyang/htmlpurifier",
             "version": "v4.16.0",
             "version_normalized": "4.16.0.0",
@@ -5244,17 +5319,17 @@
         },
         {
             "name": "yiisoft/yii2-debug",
-            "version": "2.1.23",
-            "version_normalized": "2.1.23.0",
+            "version": "2.1.24",
+            "version_normalized": "2.1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "73af53bd1b99d40f983ba57386ac6c374d9ef177"
+                "reference": "e15e954d0beb82b0b532f998f55e7275083de592"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/73af53bd1b99d40f983ba57386ac6c374d9ef177",
-                "reference": "73af53bd1b99d40f983ba57386ac6c374d9ef177",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/e15e954d0beb82b0b532f998f55e7275083de592",
+                "reference": "e15e954d0beb82b0b532f998f55e7275083de592",
                 "shasum": ""
             },
             "require": {
@@ -5268,7 +5343,7 @@
                 "yiisoft/yii2-coding-standards": "~2.0",
                 "yiisoft/yii2-swiftmailer": "*"
             },
-            "time": "2023-05-22T19:44:57+00:00",
+            "time": "2023-07-10T06:07:43+00:00",
             "type": "yii2-extension",
             "extra": {
                 "branch-alias": {

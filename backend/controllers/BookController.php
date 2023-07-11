@@ -2,13 +2,16 @@
 
 namespace backend\controllers;
 
-use common\models\base\Book;
+use common\models\Book;
 use common\models\search\BookSearch;
 use Endroid\QrCode\QrCode;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use backend\components\PngWriter;
+use yii\data\ActiveDataFilter;
+use yii\data\ActiveDataProvider;
 use yii\web\UploadedFile;
 
 /**
@@ -74,11 +77,26 @@ class BookController extends Controller
 
             if ($model->load($this->request->post())) {
                 $model -> file = UploadedFile::getInstance($model,'file');
+                $model->file_pdf = UploadedFile::getInstance($model, 'file_pdf');
+                $model->qr_code;
 
                 
                 if($model -> file) {
                     $model -> file-> saveAs('../../uploads/'.$model->file->name);
                     $model -> image = $model -> file ->name;
+                }
+                if ($model->file_pdf) {
+                    $model->file_pdf->saveAs('../../uploads/' .$model->file_pdf->name);
+                    $model->files = $model->file_pdf->name;
+                }
+                if (!empty($model->qr_code)) {
+                    $qrImg = Yii::getAlias('@book_management/qr/') . $model->qr_code->name;
+                    $model->qr_code->saveAs($qrImg);
+                } else {
+                    $qrPath = $model->createQR();
+                    $model->qrcode = basename($qrPath);
+                    $model->setAttribute('qrcode', $model->qrcode);
+                    $model->qr_code = UploadedFile::getInstance($model, 'qr_code');
                 }
 
                 if ($model -> save(false)) {
@@ -133,28 +151,7 @@ class BookController extends Controller
         return $this->redirect(['index']);
     }
     
-    public function actionGenerateQrCode($bookId)
-{
-    // Lấy dữ liệu sách từ ID sách
-    $book = Book::findOne($bookId);
-
-    if ($book) {
-        // Tạo dữ liệu hoặc URL để mã QR đại diện cho sách
-        $qrData = "Book ID: " . $book->id . "\nTitle: " . $book->title;
-
-        // Tạo đối tượng QrCode
-        $qrCode = new QrCode($qrData);
-
-        // Lưu mã QR vào tệp (tùy chọn)
-        $qrCode->writeFile('path/to/save/qrcode.png');
-
-        // Hiển thị mã QR trên giao diện người dùng
-        header('Content-Type: '.$qrCode->getContentType());
-        echo $qrCode->writeString();
-    } else {
-        // Xử lý khi không tìm thấy sách với ID được cung cấp
-    }
-}
+    
 
     /**
      * Finds the Book model based on its primary key value.

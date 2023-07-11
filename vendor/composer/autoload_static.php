@@ -84,6 +84,7 @@ class ComposerStaticInitdb61d199cfad0b58ddd130aed07f61e8
         ),
         'E' => 
         array (
+            'Endroid\\QrCode\\' => 15,
             'Egulias\\EmailValidator\\' => 23,
         ),
         'D' => 
@@ -239,6 +240,10 @@ class ComposerStaticInitdb61d199cfad0b58ddd130aed07f61e8
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
+        ),
+        'Endroid\\QrCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/endroid/qr-code/src',
         ),
         'Egulias\\EmailValidator\\' => 
         array (

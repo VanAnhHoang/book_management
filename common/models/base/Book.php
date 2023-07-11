@@ -3,6 +3,11 @@
 namespace common\models\base;
 
 use Yii;
+use Yii\helpers\Url;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\writer\PngWriter;
+
+
 
 /**
  * This is the model class for table "book".
@@ -17,10 +22,10 @@ use Yii;
  * @property int|null $updated_at
  * @property string|null $updated_by
  * @property string $image
+ * @property string $files
  * @property string $qrcode
  * 
- *
- * @property Category $idcategory0
+ * 
  */
 class Book extends \yii\db\ActiveRecord
 {
@@ -41,6 +46,7 @@ class Book extends \yii\db\ActiveRecord
         return [
             [['bookname'], 'required'],
             [['idauthor', 'idcategory', 'created_at', 'updated_at'], 'integer'],
+            [['created_at', 'updated_at'], 'safe'],
             [['description'], 'string'],
             [['bookname', 'created_by', 'updated_by', 'image'], 'string', 'max' => 255],
             [['idcategory'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['idcategory' => 'id']],
@@ -63,6 +69,7 @@ class Book extends \yii\db\ActiveRecord
             'created_by' => 'Created By',
             'updated_at' => 'Updated At',
             'updated_by' => 'Updated By',
+            'files' => 'Files',
             'image' => 'Image',
             'qrcode' => 'QR',
         ];
@@ -73,8 +80,29 @@ class Book extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getIdcategory0()
+    public function getIdcategory()
     {
         return $this->hasOne(Category::class, ['id' => 'idcategory']);
+    }
+    public function createQR() {
+        $writer = new PngWriter();
+        $url = Url::toRoute(['book/view', 'id' =>$this->id], true);
+        $qr = QrCode::create($url);
+
+        $res = $writer->write($qr);
+        $path = '../../qr/'.$this->bookname.time().'.png';
+        $res -> saveToFile($path);
+        $this->setAttribute('qrcode', $path);
+        return $path;
+    }
+    public function beforeSave($insert) {
+        if ($insert) {
+            $this->created_at = time();
+            $this->created_by = Yii::$app->user->identity->username;
+        } else {
+            $this->updated_at = time();
+            $this->updated_by = Yii::$app->user->identity->username;
+        }
+        return parent::beforeSave(($insert));
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5110396c0d5661ea3f96447c644ee5f",
+    "content-hash": "3a82de4f427bbdb637aeb6bbc82f52eb",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -440,6 +440,78 @@
                 }
             ],
             "time": "2023-06-01T07:04:22+00:00"
+        },
+        {
+            "name": "endroid/qr-code",
+            "version": "4.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/endroid/qr-code.git",
+                "reference": "5630e192948b466d418608ecce697465d20260af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/endroid/qr-code/zipball/5630e192948b466d418608ecce697465d20260af",
+                "reference": "5630e192948b466d418608ecce697465d20260af",
+                "shasum": ""
+            },
+            "require": {
+                "bacon/bacon-qr-code": "^2.0",
+                "php": "^7.3||^8.0"
+            },
+            "require-dev": {
+                "endroid/quality": "dev-master",
+                "ext-gd": "*",
+                "khanamiryan/qrcode-detector-decoder": "^1.0.4",
+                "setasign/fpdf": "^1.8.2"
+            },
+            "suggest": {
+                "ext-gd": "Enables you to write PNG images",
+                "khanamiryan/qrcode-detector-decoder": "Enables you to use the image validator",
+                "roave/security-advisories": "Makes sure package versions with known security issues are not installed",
+                "setasign/fpdf": "Enables you to use the PDF writer"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Endroid\\QrCode\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeroen van den Enden",
+                    "email": "info@endroid.nl"
+                }
+            ],
+            "description": "Endroid QR Code",
+            "homepage": "https://github.com/endroid/qr-code",
+            "keywords": [
+                "code",
+                "endroid",
+                "php",
+                "qr",
+                "qrcode"
+            ],
+            "support": {
+                "issues": "https://github.com/endroid/qr-code/issues",
+                "source": "https://github.com/endroid/qr-code/tree/4.3.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/endroid",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-09-17T07:50:43+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -5100,16 +5172,16 @@
         },
         {
             "name": "yiisoft/yii2-debug",
-            "version": "2.1.23",
+            "version": "2.1.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "73af53bd1b99d40f983ba57386ac6c374d9ef177"
+                "reference": "e15e954d0beb82b0b532f998f55e7275083de592"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/73af53bd1b99d40f983ba57386ac6c374d9ef177",
-                "reference": "73af53bd1b99d40f983ba57386ac6c374d9ef177",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/e15e954d0beb82b0b532f998f55e7275083de592",
+                "reference": "e15e954d0beb82b0b532f998f55e7275083de592",
                 "shasum": ""
             },
             "require": {
@@ -5186,7 +5258,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-22T19:44:57+00:00"
+            "time": "2023-07-10T06:07:43+00:00"
         },
         {
             "name": "yiisoft/yii2-faker",

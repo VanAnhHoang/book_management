@@ -1,5 +1,6 @@
 <?php
 namespace common\models;
+use common\models\base\Category;
 
 class Book extends \common\models\base\Book {
     public $id_file;
@@ -10,22 +11,22 @@ class Book extends \common\models\base\Book {
     {
        
         return [
-            [['name_products', 'description', 'status', 'image', 'files'], 'required'],
-            [['id_category'], 'integer'],
+            [['booknam', 'description', 'image', 'files'], 'required'],
+            [['id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name_products', 'description', 'status', 'image', 'files', 'qr_code', 'created_by', 'updated_by'], 'string', 'max' => 255],
+            [['bookname', 'description', 'image', 'files', 'qrcode', 'created_by', 'updated_by'], 'string', 'max' => 255],
             [['qr_code'], 'unique'],
-            ['file_image','file','extensions'=>'jpg,png'],
+            ['file','file','extensions'=>'jpg,png,jepg'],
 
-            [['id_category'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::class, 'targetAttribute' => ['id_category' => 'id_category']],
+            [['idcategory'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['idcategory' => 'idcategory']],
         ];
     }
 
-    public static function getCategories() {
-        $categories = \common\models\base\Categories::find()->all();
+    public static function getcategory() {
+        $category = Category::find()->all();
         $arr_cate = [];
-        foreach($categories as $cate) {
-            $arr_cate[$cate->id_category] = $cate->name_category;
+        foreach($category as $cate) {
+            $arr_cate[$cate->id] = $cate->categoryname;
         }
         return $arr_cate;
     }

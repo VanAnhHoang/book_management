@@ -35,7 +35,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'file')-> fileInput() ?>
 
-    <?= $form->field($model, 'qrcode')->hiddenInput(['idbook'=>'qrcode'])->label(false)?>
+    <?= $form->field($model, 'file_pdf')->fileInput() ?>
+
+    <?= $form->field($model, 'qrcode')->hiddenInput(['id'=>'qrcode'])->label(false)?>
 
     
     <div class="form-group">
