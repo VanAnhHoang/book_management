@@ -13,6 +13,10 @@ use yii\widgets\ActiveForm;
 
 <!DOCTYPE html>
 
+<div>
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+
+
 <head>
 
     <link rel="stylesheet" href="<link rel=" stylesheet"
@@ -30,13 +34,13 @@ use yii\widgets\ActiveForm;
 
         <div class="book-form">
 
-            <?php $form = ActiveForm::begin(); ?>
+            
             <div class="sections">
 
                 <section class="active">
 
                     <div class="bookname">
-                        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+                        
                         <?= $form->field($model, 'bookname')->textInput(['maxlength' => true]) ?>
                     </div>
 
@@ -81,15 +85,18 @@ use yii\widgets\ActiveForm;
                 <?= $form->field($model, 'qrcode')->hiddenInput(['id' => 'qrcode'])->label(false) ?>
             </div>
 
-            <div class="form-group">
-                <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-
-            </div>
+            
 
             </section>
-    </div>
+            
 
-        <?php ActiveForm::end(); ?>
+    </div>
+    <div class="form-group">
+        
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+
+    </div>    
+
 </body>
 
 
@@ -340,3 +347,5 @@ use yii\widgets\ActiveForm;
 
 
 </script>
+    <?php ActiveForm::end(); ?>
+</div>

@@ -136,7 +136,7 @@ class BookController extends Controller
             'model' => $model,
         ]);
     }
-
+    
     /**
      * Deletes an existing Book model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

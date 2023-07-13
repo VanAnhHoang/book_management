@@ -50,24 +50,29 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <div class = "book-content-right-book-author">
                         <p>
-                            Tác giả:<?php echo $model->idauthor?>
+                            Tác giả: <?php echo $model->idauthor?>
                         </p>
                     </div>
 
                     <div class = "book-content-right-book-category">
                         <p>
-                            Thể loại:<?php echo $model->idcategory?>
+                            Thể loại: <?php echo $model->idcategory?>
                         </p>
                     </div>
                     <div class = "book-content-right-book-rating">
                         <p>
-                            Đánh giá:<?php echo $model->idcategory?>
+                            Đánh giá: <?php echo $model->idauthor?>
+                        </p>
+                    </div>
+                    <div class = "book-content-right-book-view">
+                        <p>
+                            Số lượt xem: <?php echo $model->id?>
                         </p>
                     </div>
 
                     <div class = "book-content-right-book-description">
                         <p>
-                            Mô tả:<?php echo $model->description?>
+                            Mô tả: <?php echo $model->description?>
                         </p>
                     </div>
                     <div class = "book-content-right-book-qr">
@@ -94,11 +99,12 @@ $this->params['breadcrumbs'][] = $this->title;
         margin: 0 12px;
         font-size: 12px;
     }
-
+   
     .book-content-left {
         width: 50%;
     }
     .book-content-right {
+        color:black;
         width: 50%;
     }
     .book-content-left-img {
@@ -113,6 +119,11 @@ $this->params['breadcrumbs'][] = $this->title;
     .book-content-right {
         width: 50%;
         padding-left: 20px;
+    }
+
+    .book-content-right-book-qr img{
+        width: 50px;
+        height: 50px;
     }
 </style>
 </div>
