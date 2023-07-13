@@ -1,5 +1,7 @@
 main > .container {
-    padding: 70px 15px 20px;
+    max-width: 1140px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .footer {
@@ -82,7 +84,7 @@ a.desc:after {
 .nav > li > form > button.logout:focus,
 .nav > li > form > button.logout:hover {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(125, 44, 44, 0.75);
 }
 
 .nav > li > form > button.logout:focus {

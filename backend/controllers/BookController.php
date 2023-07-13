@@ -144,10 +144,10 @@ class BookController extends Controller
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
+    public function actionDelete($id) {
+        $model = $this -> findModel($id);
+        $model -> delete();
+        unlink('../../uploads/'. $model->image);
         return $this->redirect(['index']);
     }
     

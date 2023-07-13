@@ -72,4 +72,11 @@ class Book extends \common\models\base\Book {
         $this->setAttribute('qrcode', $path);
         return $path;
     }
+
+    public function actionDelete($id) {
+        $model = $this -> findModel($id);
+        $model -> delete();
+        unlink('../../uploads'. $model->image);
+        return $this->redirect(['index']);
+    }
 }
