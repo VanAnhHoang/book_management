@@ -6,14 +6,16 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var common\models\base\Book $model */
 
-$this->title = $model->id;
+$this->title = $model->bookname;
 $this->params['breadcrumbs'][] = ['label' => 'Books', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="book-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>
+        <?= Html::encode($this->title) ?>
+    </h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -26,39 +28,91 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'bookname',
-            'idauthor',
-            'idcategory',
-            'description:ntext',
-            
+    
 
-        [
-            'attribute' => 'image',
-            'format' => 'html',             
-            'value' => Html::img('../../uploads/'.$model['image'], ['width'=>'150'])
-        ],
+<div>
+    <section class = "book">
+        <div class = "container">
             
-        [
-            'attribute' => 'qrcode',
-            'format' => 'html',             
-            'value' => Html::img('../../qr/'.$model['qrcode'], ['width'=>'150'])
-        ],
-        [
-            'attribute' => 'files',
-            'format' => 'html',             
-            'value' =>$this->render('pdf/real3d-demo 2/index.html',['model' => $model])
-        ],
-            'created_at',
-            'created_by',
-            'updated_at',
-            'updated_by',
+            <div class = "book-content row">
+                <div class = "book-content-left row">
+                    <div class = "book-content-left-img">
+                        <img src="<?php echo '../../uploads/' .$model->image?>">
+                    </div>
+                </div>
+                <div class="book-content-right">
+                    <div class = "book-content-right-book-name">
+                        <h1>
+                            <?= Html::encode($this->title) ?>
+                        </h1>
+                    </div>
 
-            
-        ],
-    ]) ?>
 
+                    <div class = "book-content-right-book-author">
+                        <p>
+                            Tác giả:<?php echo $model->idauthor?>
+                        </p>
+                    </div>
+
+                    <div class = "book-content-right-book-category">
+                        <p>
+                            Thể loại:<?php echo $model->idcategory?>
+                        </p>
+                    </div>
+                    <div class = "book-content-right-book-rating">
+                        <p>
+                            Đánh giá:<?php echo $model->idcategory?>
+                        </p>
+                    </div>
+
+                    <div class = "book-content-right-book-description">
+                        <p>
+                            Mô tả:<?php echo $model->description?>
+                        </p>
+                    </div>
+                    <div class = "book-content-right-book-qr">
+                        <img src="<?php echo '../../qr/' .$model->qrcode?>">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+<style>
+    .book{
+        padding: 100px 0;
+    }
+    .book-top {
+        margin-bottom: 30px ;
+    }
+    .book-top p {
+        font-family: var(--main-text-font);
+        margin: 0 12px;
+        font-size: 12px;
+    }
+
+    .book-content-left {
+        width: 50%;
+    }
+    .book-content-right {
+        width: 50%;
+    }
+    .book-content-left-img {
+        width: 80% ;
+        padding-right: 50px;
+    }
+    .book-content-left-img img {
+        width: 100%;
+        margin-left: 20px;
+        height: 300px;
+    }
+    .book-content-right {
+        width: 50%;
+        padding-left: 20px;
+    }
+</style>
 </div>

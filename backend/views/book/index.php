@@ -30,6 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id'
+            [
+                'attribute' => 'image',
+                'format' => 'html',             
+                'value' => function ($model) {
+                 return Html::img('../../uploads/'.$model['image'], ['width'=>'150']);
+                }
+            ],
             'bookname',
             'idauthor',
             'idcategory',
@@ -40,13 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'created_by',
            
             //'updated_by',
-            [
-                'attribute' => 'image',
-                'format' => 'html',             
-                'value' => function ($model) {
-                 return Html::img('../../uploads/'.$model['image'], ['width'=>'150']);
-                }
-            ],
+            
             //'files',
             [
                 'class' => ActionColumn::className(),
