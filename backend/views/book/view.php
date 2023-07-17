@@ -50,13 +50,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <div class = "book-content-right-book-author">
                         <p>
-                            Tác giả: <?php echo $model->idauthor?>
+                            Tác giả: <?php echo $model->author->authorname?>
+                            
                         </p>
                     </div>
 
                     <div class = "book-content-right-book-category">
                         <p>
-                            Thể loại: <?php echo $model->idcategory?>
+                            Thể loại: <?php echo $model->categoryName->categoryname?>
                         </p>
                     </div>
                     <div class = "book-content-right-book-rating">
@@ -112,18 +113,24 @@ $this->params['breadcrumbs'][] = $this->title;
         padding-right: 50px;
     }
     .book-content-left-img img {
-        width: 100%;
-        margin-left: 20px;
-        height: 300px;
+        width: 90%;
+        margin-left: 35px;
+        height: 400px;
     }
     .book-content-right {
         width: 50%;
-        padding-left: 20px;
+        padding-right: 40px;
     }
 
     .book-content-right-book-qr img{
         width: 50px;
         height: 50px;
+    }
+    .book-content-right-book-rating p{
+        color: red;
+    }
+    .book-content-right-book-view p{
+        color: red;
     }
 </style>
 </div>

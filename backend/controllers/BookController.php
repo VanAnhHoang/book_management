@@ -46,12 +46,16 @@ class BookController extends Controller
     {
         $searchModel = new BookSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-
+        $books = Book::find()->all();
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'books' => $books,
         ]);
+       
     }
+    
 
     /**
      * Displays a single Book model.

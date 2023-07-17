@@ -69,14 +69,14 @@ use yii\widgets\ActiveForm;
             <div class="images">
                 <div class="pic">
                     <?= $form->field($model, 'file')->fileInput(['style' => 'display: none; visibility: none']) ?>
-                    <label class="control-label" for="book-file"><i class="fa fa-cloud-upload"></i></label>
+                    <label class="control-label" for="book-file"><i class="fa fa-cloud-upload" style="font-size: 30px; color: blue;"></i></label>
                 </div>
             </div>
 
             <div class="images1">
                 <div class="pdf">
                     <?= $form->field($model, 'file_pdf')->fileInput(['style' => 'display: none;  visibility: none']) ?>
-                    <label class="control-label" for="book-file_pdf"><i class="fa fa-cloud-upload"></i></label>
+                    <label class="control-label" for="book-file_pdf"><i class="fa fa-cloud-upload" style="font-size: 30px; color: blue;"></i></label>
                 </div>
 
             </div>
@@ -102,6 +102,7 @@ use yii\widgets\ActiveForm;
 
 
 <style>
+
     body {
         background-color: #363940;
         display: flex;
@@ -110,6 +111,7 @@ use yii\widgets\ActiveForm;
         position: relative;
 
     }
+    
 
     .wrapper {
         background-color: #fff;
@@ -121,6 +123,7 @@ use yii\widgets\ActiveForm;
         align-self: center;
         box-sizing: border-box;
     }
+
 
     header {
         border-bottom: 1px solid #ddd;
@@ -252,7 +255,7 @@ use yii\widgets\ActiveForm;
     }
 
     .images1 .pdf {
-        background-color: skyblue;
+        background-color: whitesmoke;
         align-self: center;
         text-align: center;
         padding: 40px 0;
@@ -328,6 +331,10 @@ use yii\widgets\ActiveForm;
         padding: 10px 20px;
         color: #fff;
         border-radius: 3px;
+
+    .fa-cloud-upload{
+
+    }
     }
 </style>
 

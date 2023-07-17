@@ -2,9 +2,11 @@
 namespace common\models;
 
 use common\models\base\Category;
+use common\models\base\Author;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\writer\PngWriter;
 use yii\helpers\Url;
+
 use Yii;
 
 
@@ -48,6 +50,7 @@ class Book extends \common\models\base\Book {
             $arr_cate[$cate->id] = $cate->categoryname;
         }
         return $arr_cate;
+        
     }
 
     public function beforeSave($insert) {
@@ -79,4 +82,16 @@ class Book extends \common\models\base\Book {
         unlink('../../uploads'. $model->image);
         return $this->redirect(['index']);
     }
+
+    public function getAuthor()
+    {
+    return $this->hasOne(Author::className(), ['id' => 'idauthor']);
+    }
+
+    public function getCategoryName()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'idcategory']);
+    }
+
+    
 }

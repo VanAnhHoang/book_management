@@ -1,284 +1,90 @@
+<?php
+use common\models\base\Book;
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Book</title>
+	
 	<link rel="stylesheet" type="text/css" href="../web/css/style.css">
+	<title>Book Word</title>
 </head>
+
 <body>
-	<header class="sticky-top">
-		<div class="container">
-			<div class="row">
-				<div class="col-2 menu">
-					<img src="uploads/logo.png">
-				</div>
-				<div class="col-2">
-					
-				</div>
-				<div class="col-8 menu">
-					<ul>
-						<li><a href="">Trang chủ</a></li>
-						<li><a href="">Sản phẩm</a>
-							<ul class="menu_child">
-								<li><a href="">Truyện tranh</a></li>
-								<li><a href="">Truyện nước ngoài</a></li>
-								<li><a href="">Sách lịch sử</a></li>
-							</ul>
-						</li>
-						<li><a href="">Đăng nhập</a></li>
-					</ul>
-				</div>
-			</div>
+	<header>
+
+		<div class="logo">
+			<img src = "../views/layouts/hochtml/uploads/logo.png">
 		</div>
+
+		<div class = "menu">
+			<li><a href="">Trang chủ</a></li>
+			<li><a href="">Sách</a></li>
+			<li><a href="">Thể loại</a></li>
+			<li><a href="">Tác giả</a></li>
+			<li><a href="">Đăng nhập</a></li>
+			<li><a href="">Đăng kí</a></li>
+
+		</div>
+
+		<div class ="icon">
+			<li><input placeholder="Tìm kiếm" type = "text"><i class= fas fa-search></i></li>
+			<li><a href="">Profile</a></li>
+		</div>
+
 	</header>
-	<div class="container slider-margin">
-		<div class="row">
-			<div class="col-12">
-					<div class="slideshow-container">
-		<div class="mySlides fade">
-			<div class="numbertext">
-				1/3
-			</div>
-			<img src="uploads/logo1.png" style="width: 100%;">
-			<div class="text">Caption</div>
+	
+	<section id="Slider">
+
+		<div class = "aspect-ratio-43">
+			<img src ="../views/layouts/hochtml/uploads/bìa1.jpeg">
+			<img src ="../views/layouts/hochtml/uploads/bia2.jpeg">
 		</div>
-		<div class="mySlides fade">
-			<div class="numbertext">
-				2/3
-			</div>
-			<img src="uploads/logo2.png" style="width: 100%;">
-			<div class="text">Caption</div>
-		</div>
-		<div class="mySlides fade">
-			<div class="numbertext">
-				3/3
-			</div>
-			<img src="uploads/logo3.png" style="width: 100%;">
-			<div class="text">Caption</div>
-		</div>
-		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-		<a class="next" onclick="plusSlides(1)">&#10095;</a>
-	</div>
+	</section>
 	<br>
-	<div style="text-align: center;">
-		<span class="dot" onclick="currentSlide(1)"></span>
-		<span class="dot" onclick="currentSlide(2)"></span>
-		<span class="dot"onclick="currentSlide(3)"></span>
+	<h1 class= "title">Sản phẩm nổi bật</h1>
+	<h3 class= "slogan"> Cùng đến với những tựa sách hàng đầu của chúng tôi. Bạn chắc chắn sẽ tìm thấy những gì bạn đang tìm kiếm.</h3>
+	<div class="view-img">
+		<?php
+		$books = Book::find()->all();
+		if ($books):
+			foreach ($books as $book):
+
+		?>
+		<img src="<?php echo '../../uploads/' .$book->image?>">
+		<?php
+			endforeach;
+		endif;
+		?>
 	</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12 title">
-				<h3>Product</h3>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-2th">
-				<div class="card">
-					<div class="image">
-						<img src="uploads/12333.png">
-					</div>
-					<div class="name">
-						<p>SAMSUNG GALAXY</p>
-					</div>
-					<div class="price">
-						<p>23.000.000 VNĐ</p>
-					</div>
-				</div>
-			</div>
-						<div class="col-2th">
-				<div class="card">
-					<div class="image">
-						<img src="uploads/12333.png">
-					</div>
-					<div class="name">
-						<p>SAMSUNG GALAXY</p>
-					</div>
-					<div class="price">
-						<p>23.000.000 VNĐ</p>
-					</div>
-				</div>
-			</div>
-						<div class="col-2th">
-				<div class="card">
-					<div class="image">
-						<img src="uploads/12333.png">
-					</div>
-					<div class="name">
-						<p>SAMSUNG GALAXY</p>
-					</div>
-					<div class="price">
-						<p>23.000.000 VNĐ</p>
-					</div>
-				</div>
-			</div>
-						<div class="col-2th">
-				<div class="card">
-					<div class="image">
-						<img src="uploads/12333.png">
-					</div>
-					<div class="name">
-						<p>SAMSUNG GALAXY</p>
-					</div>
-					<div class="price">
-						<p>23.000.000 VNĐ</p>
-					</div>
-				</div>
-			</div>
-						<div class="col-2th">
-				<div class="card">
-					<div class="image">
-						<img src="uploads/12333.png">
-					</div>
-					<div class="name">
-						<p>SAMSUNG GALAXY</p>
-					</div>
-					<div class="price">
-						<p>23.000.000 VNĐ</p>
-					</div>
-				</div>
-			</div>
-						<div class="col-2th">
-				<div class="card">
-					<div class="image">
-						<img src="uploads/12333.png">
-					</div>
-					<div class="name">
-						<p>SAMSUNG GALAXY</p>
-					</div>
-					<div class="price">
-						<p>23.000.000 VNĐ</p>
-					</div>
-				</div>
-			</div>
-						<div class="col-2th">
-				<div class="card">
-					<div class="image">
-						<img src="uploads/12333.png">
-					</div>
-					<div class="name">
-						<p>SAMSUNG GALAXY</p>
-					</div>
-					<div class="price">
-						<p>23.000.000 VNĐ</p>
-					</div>
-				</div>
-			</div>
-						<div class="col-2th">
-				<div class="card">
-					<div class="image">
-						<img src="uploads/12333.png">
-					</div>
-					<div class="name">
-						<p>SAMSUNG GALAXY</p>
-					</div>
-					<div class="price">
-						<p>23.000.000 VNĐ</p>
-					</div>
-				</div>
-			</div>
-						<div class="col-2th">
-				<div class="card">
-					<div class="image">
-						<img src="uploads/12333.png">
-					</div>
-					<div class="name">
-						<p>SAMSUNG GALAXY</p>
-					</div>
-					<div class="price">
-						<p>23.000.000 VNĐ</p>
-					</div>
-				</div>
-			</div>
-						<div class="col-2th">
-				<div class="card">
-					<div class="image">
-						<img src="uploads/12333.png">
-					</div>
-					<div class="name">
-						<p>SAMSUNG GALAXY</p>
-					</div>
-					<div class="price">
-						<p>23.000.000 VNĐ</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<footer>
-		<div class="container">
-			<div class="row footer">
-				<div class="col-3">
-					<h3>TITLE</h3>
-					<ul class="menu_footer">
-						<li><a href="">ASUS</a></li>
-						<li><a href="">DELL</a></li>
-						<li><a href="">MAC</a></li>
-						<li><a href="">MSI</a></li>
-					</ul>
-				</div>
-				<div class="col-3">
-					<h3>TITLE</h3>
-					<ul class="menu_footer">
-						<li><a href="">ASUS</a></li>
-						<li><a href="">DELL</a></li>
-						<li><a href="">MAC</a></li>
-						<li><a href="">MSI</a></li>
-					</ul>
-				</div>
-				<div class="col-3">
-					<h3>TITLE</h3>
-					<ul class="menu_footer">
-						<li><a href="">ASUS</a></li>
-						<li><a href="">DELL</a></li>
-						<li><a href="">MAC</a></li>
-						<li><a href="">MSI</a></li>
-					</ul>
-				</div>
-				<div class="col-3">
-					<h3>TITLE</h3>
-					<ul class="menu_footer">
-						<li><a href="">ASUS</a></li>
-						<li><a href="">DELL</a></li>
-						<li><a href="">MAC</a></li>
-						<li><a href="">MSI</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12 copy_right">
-				<a href="">No copyRight designer By vkduy.ktpm0116@student.ctuet.edu.vn</a>
-			</div>
-		</div>
-	</footer>
+	
+	
 </body>
+
+
+
+
+
+
 <script>
-		var slideIndex = 1;
-		showSlides(slideIndex);
-
-		function plusSlides(n) {
-		  showSlides(slideIndex += n);
-		}
-
-		function currentSlide(n) {
-		  showSlides(slideIndex = n);
-		}
-
-		function showSlides(n) {
-		  var i;
-		  var slides = document.getElementsByClassName("mySlides");
-		  var dots = document.getElementsByClassName("dot");
-		  if (n > slides.length) {slideIndex = 1}    
-		  if (n < 1) {slideIndex = slides.length}
-		  for (i = 0; i < slides.length; i++) {
-		      slides[i].style.display = "none";  
-		  }
-		  for (i = 0; i < dots.length; i++) {
-		      dots[i].className = dots[i].className.replace(" active", "");
-		  }
-		  slides[slideIndex-1].style.display = "block";  
-		  dots[slideIndex-1].className += "active";
-		  setTimeout(showSlides, 1000);
-		}
+	const imgPosition = document.querySelectorAll(".aspect-ratio-43 img")
+	const imgContainer = document.querySelector(".aspect-ratio-43")
+	let imgNumber =imgPosition.length
+	let main = 0
+	imgPosition.forEach(function(image,main){
+		image.style.left = main*100 + "%" // căn các ảnh theo chiều ngang
+	})
+	function imgSlide () { //sau 5s main tang 1, the cha se dich sang trai 
+		main++;
+		
+		if(main>=imgNumber) {main=0}
+		imgContainer.style.left = "-" +main*100+ "%"
+		
+	}
+	
+	setInterval(imgSlide,5000)
 </script>
+
+
+
 </html>

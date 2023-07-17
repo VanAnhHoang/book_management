@@ -1,6 +1,8 @@
 <?php
 
 use common\models\base\Book;
+
+use common\models\base\Author;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -20,12 +22,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Book', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+  
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        
         'filterModel' => $searchModel,
+        
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -38,23 +41,37 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             'bookname',
-            'idauthor',
-            'idcategory',
+            [
+                'attribute' => 'idauthor',
+                'format' => 'html',             
+                'value' => function ($model) {
+                 return Html::encode($model->author->authorname);
+                },
+                
+            ],
+            [
+                'attribute' => 'idcategory',
+                'format' => 'html',             
+                'value' => function ($model) {
+                 return Html::encode($model->categoryName->categoryname);
+                },
+                    'filter' => Html::activeDropDownList(
+                    $searchModel,
+                    'idcategory',
+                    \common\models\Book::getcategory(),
+                    ['class' => 'form-control', 'prompt' => 'Chọn']
+                ),    
+            ],
             
             //'ngaxuatban',
-            'description:ntext',
+            //'description:ntext',
             
             //'created_by',
            
             //'updated_by',
             
             //'files',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Book $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
+            
 
             [
                 'attribute' => 'qrcode',
@@ -68,6 +85,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'created_at',
             'updated_at',
+            [
+                'class' => ActionColumn::className(),
+                'urlCreator' => function ($action, Book $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'id' => $model->id]);
+                 }
+            ],
+        
 
         ],
     ]); ?>

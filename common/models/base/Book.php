@@ -105,4 +105,15 @@ class Book extends \yii\db\ActiveRecord
         }
         return parent::beforeSave(($insert));
     }
+
+    public function getCategoryName()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'idcategory']);
+    }
+
+    public function getAuthor()
+    {
+    return $this->hasOne(Author::className(), ['id' => 'idauthor']);
+    }
+
 }

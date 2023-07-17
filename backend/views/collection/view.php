@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var common\models\base\Collection $model */
 
-$this->title = $model->id;
+$this->title = $model->collectionname;
 $this->params['breadcrumbs'][] = ['label' => 'Collections', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
